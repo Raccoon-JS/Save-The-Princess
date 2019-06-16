@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready():
+	#$low_frequency.play()
 	$player.play("opening")
 	pass # Replace with function body.
 
@@ -12,6 +13,8 @@ func _ready():
 
 func _on_player_animation_finished(anim_name):
 	if anim_name == "opening":
+		#$low_frequency.stop()
+		$low_frequency.play()
 		$laughter.play()
 		$player.play("surprise")
 	if anim_name == "surprise":
