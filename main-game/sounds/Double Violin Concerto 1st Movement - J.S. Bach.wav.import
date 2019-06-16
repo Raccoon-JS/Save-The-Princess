@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Double Violin Concerto 1st Movement - J.S. Bach.wav-187c527d0844cf5c7cfda63afb2d7374.sample"
+
+[deps]
+
+source_file="res://sounds/Double Violin Concerto 1st Movement - J.S. Bach.wav"
+dest_files=[ "res://.import/Double Violin Concerto 1st Movement - J.S. Bach.wav-187c527d0844cf5c7cfda63afb2d7374.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

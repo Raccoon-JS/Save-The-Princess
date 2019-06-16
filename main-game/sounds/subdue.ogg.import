@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/subdue.ogg-c792a9aa2fb73217785a991a449a1c65.oggstr"
+
+[deps]
+
+source_file="res://sounds/subdue.ogg"
+dest_files=[ "res://.import/subdue.ogg-c792a9aa2fb73217785a991a449a1c65.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

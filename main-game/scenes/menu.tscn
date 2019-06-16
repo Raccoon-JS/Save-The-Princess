@@ -1,24 +1,253 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://fonts/futura/futur.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/menu.gd" type="Script" id=1]
+[ext_resource path="res://images/letter_white_out.png" type="Texture" id=2]
+[ext_resource path="res://images/letter-START-button.png" type="Texture" id=3]
+[ext_resource path="res://images/letter-QUIT-button.png" type="Texture" id=4]
+[ext_resource path="res://images/letter-ABOUT-button.png" type="Texture" id=5]
+[ext_resource path="res://images/my_cousin_jrs.png" type="Texture" id=6]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://sounds/typing-noise.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/subdue.ogg" type="AudioStream" id=9]
+[ext_resource path="res://scripts/text.gd" type="Script" id=10]
+[ext_resource path="res://sounds/OldDoorCreaking.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/Low_Frequency.wav" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
-size = 200
-font_data = ExtResource( 1 )
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+extra_spacing_top = 10
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "about_transit"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("background/letter:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00223107, 0.0116644, 1 ),
+"transitions": PoolRealArray( 0.120742, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -800, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("background/ABOUT:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 800, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("background/letter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00296833, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0509804, 0.145098, 0.152941, 1 ), Color( 0.0509804, 0.145098, 0.152941, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("introduction:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.0980731, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 800 ) ]
+}
 
 [node name="menu" type="Node"]
+script = ExtResource( 1 )
 
 [node name="background" type="ColorRect" parent="."]
 margin_right = 800.0
 margin_bottom = 800.0
-color = Color( 0.14902, 0.45098, 0.407843, 1 )
+color = Color( 0, 0.694118, 0.627451, 1 )
 
-[node name="placeholder_text" type="Label" parent="."]
+[node name="letter" type="TextureRect" parent="background"]
+modulate = Color( 0.0509804, 0.145098, 0.152941, 0.96062 )
+margin_left = 0.000152588
 margin_right = 800.0
 margin_bottom = 800.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 2 )
+expand = true
+
+[node name="start" type="TextureButton" parent="background/letter"]
+modulate = Color( 0, 1, 0, 0.470588 )
+margin_left = 30.0
+margin_top = 610.0
+margin_right = 190.0
+margin_bottom = 650.0
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="quit" type="TextureButton" parent="background/letter"]
+modulate = Color( 0, 1, 0, 0.470588 )
+margin_left = 250.0
+margin_top = 300.0
+margin_right = 360.0
+margin_bottom = 340.0
+texture_hover = ExtResource( 4 )
+expand = true
+
+[node name="about" type="TextureButton" parent="background/letter"]
+modulate = Color( 0, 1, 0, 0.470588 )
+margin_left = 540.0
+margin_top = 200.0
+margin_right = 670.0
+margin_bottom = 240.0
+texture_hover = ExtResource( 5 )
+expand = true
+
+[node name="ABOUT" type="Control" parent="background"]
+margin_left = 800.0
+margin_right = 1600.0
+margin_bottom = 800.0
+
+[node name="cousin_jrs" type="TextureRect" parent="background/ABOUT"]
+margin_left = 64.0
+margin_top = 530.0
+margin_right = 304.0
+margin_bottom = 770.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 6 )
+expand = true
+
+[node name="opening_file_command" type="Label" parent="background/ABOUT"]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 349.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0.694118, 0.627451, 1 )
-text = "THIS IS THE MENU"
+custom_colors/font_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "opening \"about_the_game.txt\""
 align = 1
 valign = 1
-autowrap = true
+
+[node name="command_text_speed" type="Timer" parent="background/ABOUT/opening_file_command"]
+wait_time = 0.02
+
+[node name="sound" type="AudioStreamPlayer" parent="background/ABOUT/opening_file_command"]
+stream = ExtResource( 8 )
+volume_db = -35.0
+
+[node name="return" type="Button" parent="background/ABOUT"]
+margin_left = 600.0
+margin_top = 16.0
+margin_right = 736.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_pressed = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "RETURN"
+flat = true
+
+[node name="description" type="RichTextLabel" parent="background/ABOUT"]
+margin_left = 64.0
+margin_top = 80.0
+margin_right = 736.0
+margin_bottom = 752.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "I made SAVE THE PRINCESS as an entry for GODOT WILD JAM 10. However, due to constant GLITCHing and bugs, I decided to pull myself out of the Game Jam and cancelled the project all together. What a bummer.
+I intended to make this game as a simple top-down adventure with hero saving the princess at the end. But things don't go as I wanted, and I need someone to look over this and check what's wrong with this game.
+
+I made most of the sprites, but I also used some public domain musics with licenses. "
+scroll_active = false
+
+[node name="typing_speed" type="Timer" parent="background/ABOUT/description"]
+wait_time = 0.01
+
+[node name="sound" type="AudioStreamPlayer" parent="background/ABOUT/description"]
+stream = ExtResource( 8 )
+volume_db = -35.0
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="introduction" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0.14902, 0.45098, 0.407843, 1 )
+
+[node name="text" type="RichTextLabel" parent="introduction"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 700.0
+margin_bottom = 700.0
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0.694118, 0.627451, 1 )
+text = "Objective:
+Finish your cousin's game by fixing three major bugs. Here are his letter, his notes, and a USB drive with the project.
+
+Press Enter"
+scroll_active = false
+script = ExtResource( 10 )
+
+[node name="beep" type="AudioStreamPlayer" parent="introduction/text"]
+stream = ExtResource( 8 )
+volume_db = -35.0
+
+[node name="text_speed" type="Timer" parent="introduction"]
+wait_time = 0.02
+autostart = true
+
+[node name="open" type="AudioStreamPlayer" parent="introduction"]
+stream = ExtResource( 11 )
+volume_db = -5.0
+
+[node name="low_frequency" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -10.0
+autoplay = true
+
+[node name="player" type="AnimationPlayer" parent="."]
+anims/about_transit = SubResource( 5 )
+anims/dissolve = SubResource( 6 )
+anims/open = SubResource( 7 )
+[connection signal="pressed" from="background/letter/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="background/letter/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="background/letter/about" to="." method="_on_about_pressed"]
+[connection signal="timeout" from="background/ABOUT/opening_file_command/command_text_speed" to="." method="_on_command_text_speed_timeout"]
+[connection signal="pressed" from="background/ABOUT/return" to="." method="_on_return_pressed"]
+[connection signal="timeout" from="background/ABOUT/description/typing_speed" to="." method="_on_about_description_typing_speed_timeout"]
+[connection signal="timeout" from="introduction/text_speed" to="introduction/text" method="_on_text_speed_timeout"]
+[connection signal="animation_finished" from="player" to="." method="_on_player_animation_finished"]
+[connection signal="animation_started" from="player" to="." method="_on_player_animation_started"]
