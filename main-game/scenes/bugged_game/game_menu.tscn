@@ -1,15 +1,73 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/bugged_game/game_menu.gd" type="Script" id=1]
 [ext_resource path="res://images/mountain-landscape.png" type="Texture" id=2]
 [ext_resource path="res://images/unfinished_game_title.png" type="Texture" id=3]
 [ext_resource path="res://images/barrier.png" type="Texture" id=4]
 [ext_resource path="res://images/unfinished_game_menu_options.png" type="Texture" id=5]
-[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://sounds/ingame-selection-noise.wav" type="AudioStream" id=6]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://sounds/mountain-trials.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "begin"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("cover:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 800, 800 ), Vector2( 800, 600 ), Vector2( 800, 400 ), Vector2( 800, 200 ), Vector2( 800, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cover:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 200 ), Vector2( 0, 400 ), Vector2( 0, 600 ), Vector2( 0, 800 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "finish"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("cover:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 800 ), Vector2( 0, 600 ), Vector2( 0, 400 ), Vector2( 0, 200 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cover:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 800, 0 ), Vector2( 800, 200 ), Vector2( 800, 400 ), Vector2( 800, 600 ), Vector2( 800, 800 ) ]
+}
 
 [node name="game_menu" type="Node"]
 script = ExtResource( 1 )
@@ -18,32 +76,27 @@ script = ExtResource( 1 )
 margin_right = 800.0
 margin_bottom = 800.0
 color = Color( 0, 0.694118, 0.627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="image" type="TextureRect" parent="."]
 modulate = Color( 0.0509804, 0.145098, 0.152941, 1 )
 margin_right = 800.0
 margin_bottom = 800.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="title" type="Control" parent="."]
 margin_left = 24.0
 margin_top = 20.0
 margin_right = 772.0
 margin_bottom = 400.0
-
-[node name="dark" type="ColorRect" parent="title"]
-visible = false
-margin_right = 752.0
-margin_bottom = 384.0
-color = Color( 0.14902, 0.45098, 0.407843, 1 )
-
-[node name="light" type="ColorRect" parent="title/dark"]
-visible = false
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 742.0
-margin_bottom = 374.0
-color = Color( 0, 0.694118, 0.627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="text" type="TextureRect" parent="title"]
 modulate = Color( 0.870588, 0.239216, 0.239216, 1 )
@@ -55,6 +108,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="barrier" type="TextureRect" parent="title"]
 modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
@@ -64,11 +120,17 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 texture = ExtResource( 4 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="lower" type="Control" parent="."]
 margin_top = 400.0
 margin_right = 800.0
 margin_bottom = 700.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="options" type="TextureRect" parent="lower"]
 margin_left = 260.0
@@ -79,6 +141,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 texture = ExtResource( 5 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="selection" type="TextureRect" parent="lower/options"]
 modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
@@ -88,6 +153,13 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 texture = ExtResource( 4 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sound" type="AudioStreamPlayer" parent="lower"]
+stream = ExtResource( 6 )
+volume_db = -10.0
 
 [node name="creative_common" type="Label" parent="."]
 margin_top = 700.0
@@ -98,3 +170,23 @@ custom_colors/font_color = Color( 0.866667, 0.239216, 0.239216, 1 )
 text = "(cc) 2014 RACCON_JS"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cover" type="ColorRect" parent="."]
+margin_top = 800.0
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="player" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/begin = SubResource( 2 )
+anims/finish = SubResource( 3 )
+[connection signal="animation_finished" from="player" to="." method="_on_player_animation_finished"]
+[connection signal="animation_started" from="player" to="." method="_on_player_animation_started"]
