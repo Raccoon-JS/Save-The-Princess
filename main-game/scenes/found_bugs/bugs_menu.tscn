@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="bugs_menu" type="Node"]
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
