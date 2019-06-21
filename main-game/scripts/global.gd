@@ -3,7 +3,10 @@ extends Node
 var current_scene = null
 var new_scene = null
 
+var bugs_found = []
+
 func _ready():
+	bugs_found = [false,false,false]
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 	pass

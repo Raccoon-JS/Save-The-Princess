@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://images/arrow_button_left.png" type="Texture" id=1]
-[ext_resource path="res://images/arrow_button_right.png" type="Texture" id=2]
+[ext_resource path="res://scripts/bug_documents/bug_documents.gd" type="Script" id=1]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/bug_documents/informations.gd" type="Script" id=3]
+[ext_resource path="res://images/arrow_button_left.png" type="Texture" id=4]
+[ext_resource path="res://images/arrow_button_right.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
 
 [node name="bug_documents" type="Node"]
+script = ExtResource( 1 )
 
 [node name="background" type="ColorRect" parent="."]
 margin_right = 800.0
@@ -11,6 +27,7 @@ margin_bottom = 800.0
 color = Color( 0, 0.694118, 0.627451, 1 )
 
 [node name="profile_pic" type="TextureRect" parent="."]
+modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 368.0
@@ -19,23 +36,47 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 expand = true
 
-[node name="buttons" type="Control" parent="."]
+[node name="description" type="Control" parent="."]
+margin_left = 32.0
+margin_top = 400.0
+margin_right = 768.0
+margin_bottom = 768.0
+
+[node name="bugs_name" type="RichTextLabel" parent="description"]
+margin_right = 368.0
+margin_bottom = 60.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+
+[node name="problem" type="RichTextLabel" parent="description"]
+margin_top = 60.0
+margin_right = 736.0
+margin_bottom = 336.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+scroll_active = false
+
+[node name="informations" type="Node" parent="description"]
+script = ExtResource( 3 )
+
+[node name="dir_buttons" type="Control" parent="."]
 margin_left = 400.0
 margin_right = 800.0
 margin_bottom = 400.0
 
-[node name="left" type="TextureButton" parent="buttons"]
+[node name="left_button" type="TextureButton" parent="dir_buttons"]
+modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
 margin_left = 126.0
 margin_top = 168.0
 margin_right = 190.0
-margin_bottom = 232.0
+margin_bottom = 238.0
 rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 1 )
-expand = true
+texture_normal = ExtResource( 4 )
 
-[node name="right" type="TextureButton" parent="buttons"]
+[node name="right_button" type="TextureButton" parent="dir_buttons"]
+modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
 margin_left = 210.0
 margin_top = 168.0
 margin_right = 274.0
@@ -43,21 +84,17 @@ margin_bottom = 232.0
 rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 2 )
-expand = true
+texture_normal = ExtResource( 5 )
 
-[node name="description" type="Control" parent="."]
+[node name="return" type="Button" parent="."]
 margin_left = 32.0
-margin_top = 400.0
-margin_right = 768.0
-margin_bottom = 768.0
-
-[node name="name" type="RichTextLabel" parent="description"]
-margin_right = 368.0
-margin_bottom = 60.0
-
-[node name="problem" type="RichTextLabel" parent="description"]
-margin_top = 60.0
-margin_right = 736.0
-margin_bottom = 368.0
-scroll_active = false
+margin_top = 736.0
+margin_right = 152.0
+margin_bottom = 782.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "RETURN"
+flat = true
+[connection signal="pressed" from="dir_buttons/left_button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="dir_buttons/right_button" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="return" to="." method="_on_return_button_pressed"]

@@ -14,10 +14,10 @@ func _ready():
 
 func _input(event):
 	
-	if event.is_action_pressed("move_up"):
+	if event.is_action_pressed("move_up") or event.is_action_pressed("ui_up"):
 		option -= 1
 		$lower/sound.play()
-	elif event.is_action_pressed("move_down"):
+	elif event.is_action_pressed("move_down") or event.is_action_pressed("ui_down"):
 		option += 1
 		$lower/sound.play()
 	elif event.is_action_pressed("ENTER"):
