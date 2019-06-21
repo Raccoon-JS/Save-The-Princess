@@ -4,9 +4,11 @@ var current_scene = null
 var new_scene = null
 
 var bugs_found = []
+var interrogating_bug
 
 func _ready():
 	bugs_found = [false,false,false]
+	interrogating_bug = "none"
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 	pass

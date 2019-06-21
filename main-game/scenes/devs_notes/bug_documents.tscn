@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/bug_documents/bug_documents.gd" type="Script" id=1]
-[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://scripts/bug_documents/informations.gd" type="Script" id=3]
-[ext_resource path="res://images/arrow_button_left.png" type="Texture" id=4]
-[ext_resource path="res://images/arrow_button_right.png" type="Texture" id=5]
+[ext_resource path="res://images/my_cousin_jrs.png" type="Texture" id=2]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/bug_documents/informations.gd" type="Script" id=4]
+[ext_resource path="res://images/arrow_button_left.png" type="Texture" id=5]
+[ext_resource path="res://images/arrow_button_right.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 36
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [node name="bug_documents" type="Node"]
 script = ExtResource( 1 )
@@ -25,6 +26,10 @@ script = ExtResource( 1 )
 margin_right = 800.0
 margin_bottom = 800.0
 color = Color( 0, 0.694118, 0.627451, 1 )
+
+[node name="my_cousin_jrs" type="Sprite" parent="."]
+position = Vector2( 650, 610 )
+texture = ExtResource( 2 )
 
 [node name="profile_pic" type="TextureRect" parent="."]
 modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
@@ -57,7 +62,7 @@ custom_colors/default_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
 scroll_active = false
 
 [node name="informations" type="Node" parent="description"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="dir_buttons" type="Control" parent="."]
 margin_left = 400.0
@@ -73,7 +78,7 @@ margin_bottom = 238.0
 rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 5 )
 
 [node name="right_button" type="TextureButton" parent="dir_buttons"]
 modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
@@ -84,7 +89,7 @@ margin_bottom = 232.0
 rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
 [node name="return" type="Button" parent="."]
 margin_left = 32.0
@@ -93,6 +98,8 @@ margin_right = 152.0
 margin_bottom = 782.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+custom_colors/font_color_pressed = Color( 0.14902, 0.45098, 0.407843, 1 )
 text = "RETURN"
 flat = true
 [connection signal="pressed" from="dir_buttons/left_button" to="." method="_on_left_button_pressed"]

@@ -1,23 +1,122 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://fonts/futura/futur.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/found_bugs/bugs_menu.gd" type="Script" id=1]
+[ext_resource path="res://images/glitched_head_transparent-2.png" type="Texture" id=2]
+[ext_resource path="res://images/glitched_head_transparent-3.png" type="Texture" id=3]
+[ext_resource path="res://images/glitched_head_transparent-4.png" type="Texture" id=4]
+[ext_resource path="res://fonts/futura/futur.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 1 )
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 6 )
 
 [node name="bugs_menu" type="Node"]
+script = ExtResource( 1 )
 
 [node name="background" type="ColorRect" parent="."]
 margin_right = 800.0
 margin_bottom = 800.0
 color = Color( 0, 0.694118, 0.627451, 1 )
 
-[node name="placeholder" type="Label" parent="."]
+[node name="bugs" type="Control" parent="."]
 margin_right = 800.0
-margin_bottom = 800.0
+margin_bottom = 600.0
+
+[node name="images" type="Control" parent="bugs"]
+margin_right = 800.0
+margin_bottom = 600.0
+
+[node name="Ant_pic" type="TextureRect" parent="bugs/images"]
+margin_right = 360.0
+margin_bottom = 400.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Beetle_pic" type="TextureRect" parent="bugs/images"]
+margin_left = 230.0
+margin_top = 240.0
+margin_right = 550.0
+margin_bottom = 560.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Cricket_pic" type="TextureRect" parent="bugs/images"]
+margin_left = 480.0
+margin_right = 800.0
+margin_bottom = 320.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 4 )
+expand = true
+
+[node name="buttons" type="Control" parent="bugs"]
+margin_right = 800.0
+margin_bottom = 600.0
+
+[node name="ANT" type="Button" parent="bugs/buttons"]
+margin_left = 140.0
+margin_top = 320.0
+margin_right = 239.0
+margin_bottom = 367.0
 custom_fonts/font = SubResource( 1 )
-text = "This is the menu of bugs."
-align = 1
-valign = 1
-autowrap = true
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "ANT"
+flat = true
+
+[node name="BEETLE" type="Button" parent="bugs/buttons"]
+margin_left = 310.0
+margin_top = 580.0
+margin_right = 456.0
+margin_bottom = 627.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "BEETLE"
+flat = true
+
+[node name="CRICKET" type="Button" parent="bugs/buttons"]
+margin_left = 540.0
+margin_top = 330.0
+margin_right = 717.0
+margin_bottom = 377.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "CRICKET"
+flat = true
+
+[node name="return" type="Button" parent="."]
+margin_left = 20.0
+margin_top = 730.0
+margin_right = 140.0
+margin_bottom = 785.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "RETURN"
+flat = true
+[connection signal="pressed" from="bugs/buttons/ANT" to="." method="_on_ANT_pressed"]
+[connection signal="pressed" from="bugs/buttons/BEETLE" to="." method="_on_BEETLE_pressed"]
+[connection signal="pressed" from="bugs/buttons/CRICKET" to="." method="_on_CRICKET_pressed"]
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]
