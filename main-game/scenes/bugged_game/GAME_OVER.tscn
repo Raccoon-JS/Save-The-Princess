@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/bugged_game/GAME_OVER.gd" type="Script" id=1]
 [ext_resource path="res://fonts/moria-citadel/MoriaCitadel.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/as-the-light-fades.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -56,5 +57,10 @@ custom_colors/font_color_hover = Color( 0, 0.694118, 0.627451, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "MENU"
 flat = true
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
 [connection signal="pressed" from="start_over" to="." method="_on_start_over_pressed"]
 [connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]

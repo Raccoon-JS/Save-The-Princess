@@ -4,6 +4,7 @@ func _on_aura_area_entered(area):
 	
 	if global.fixed[1]:
 		if area.name == "knife_throw":
+			$sound.play()
 			queue_free()
 	else:
 		if area.name == "knife_throw":

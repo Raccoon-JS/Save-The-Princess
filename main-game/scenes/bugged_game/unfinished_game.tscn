@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/bugged_game/unfinished_game.gd" type="Script" id=1]
 [ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=2]
@@ -184,6 +184,23 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 2/z_index = 0
 
+[sub_resource type="Animation" id=14]
+resource_name = "opening"
+length = 1.2
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("cover:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 200.0, 400.0, 600.0, 800.0 ]
+}
+
 [node name="unfinished_game" type="Node"]
 script = ExtResource( 1 )
 
@@ -265,6 +282,9 @@ current = true
 [node name="hud" parent="camera" instance=ExtResource( 5 )]
 
 [node name="tiles" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="non_obstacles" type="TileMap" parent="tiles"]
 tile_set = SubResource( 3 )
@@ -358,6 +378,9 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="items" type="Node2D" parent="."]
 modulate = Color( 0.870588, 0.239216, 0.239216, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="fire_1" parent="items" instance=ExtResource( 10 )]
 position = Vector2( 200, 1200 )
@@ -383,8 +406,17 @@ position = Vector2( 400, 1200 )
 [node name="player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 400, 400 )
 
+[node name="cover" type="ColorRect" parent="."]
+margin_top = 800.0
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/opening = SubResource( 14 )
+
 [node name="bg_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-autoplay = true
 [connection signal="body_entered" from="characters/npc/princess" to="." method="_on_princess_body_entered"]
 [connection signal="body_entered" from="items/knife" to="." method="_on_knife_body_entered"]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]

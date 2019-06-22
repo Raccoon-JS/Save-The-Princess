@@ -20,6 +20,7 @@ func _on_start_pressed():
 
 
 func _on_player_animation_finished(anim_name):
+	$bg_music.play()
 	if anim_name == "up" and mode == "menu":
 		global.goto_scene("res://scenes/bugged_game/game_menu.tscn")
 	

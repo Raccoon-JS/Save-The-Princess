@@ -21,6 +21,7 @@ func _on_control_pressed():
 
 func _on_player_animation_finished(anim_name):
 	if anim_name == "cover":
+		$bg_music.play()
 		if mode == "return":
 			global.goto_scene("res://scenes/bugged_game/game_menu.tscn")
 		elif mode == "control":

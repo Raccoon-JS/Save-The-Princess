@@ -25,6 +25,7 @@ func _ready():
 	else:
 		$background/texts/princess_words.add_text("The knight! Thank goodness. I am afraid to tell you that the princess is in another castle.")
 		$characters/npc/princess/Sprite.texture = preload("res://images/beautiful-princess-transparent.png")
+	$animation.play("opening")
 	set_process(true)
 	pass
 
@@ -85,4 +86,10 @@ func _on_knife_body_entered(body):
 	if body.name == "player":
 		if global.fixed[0]:
 			$camera/hud/item_hold/knife.visible = true
+	pass # Replace with function body.
+
+
+func _on_animation_finished(anim_name):
+	if anim_name == "opening":
+		$bg_music.play()
 	pass # Replace with function body.

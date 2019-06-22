@@ -28,7 +28,7 @@ func _ready():
 		$picture.texture = load("res://images/glitched_head_transparent-4.png")
 	else:
 		$picture.texture = load("res://images/NoPicture.png")
-	
+	$player.play("floating")
 	$picture.modulate = activate_color(global.interrogating_bug)
 	write_component()
 	pass # Replace with function body.

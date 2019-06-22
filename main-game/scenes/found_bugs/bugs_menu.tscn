@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/found_bugs/bugs_menu.gd" type="Script" id=1]
 [ext_resource path="res://images/glitched_head_transparent-2.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://images/glitched_head_transparent-4.png" type="Texture" id=4]
 [ext_resource path="res://fonts/futura/futur.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://sounds/subdue.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -116,6 +117,11 @@ custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
 custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
 text = "RETURN"
 flat = true
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+autoplay = true
 [connection signal="pressed" from="bugs/buttons/ANT" to="." method="_on_ANT_pressed"]
 [connection signal="pressed" from="bugs/buttons/BEETLE" to="." method="_on_BEETLE_pressed"]
 [connection signal="pressed" from="bugs/buttons/CRICKET" to="." method="_on_CRICKET_pressed"]

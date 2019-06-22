@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/forest-of-the-king.wav-279b2eb8bcaa1284b865d99fbf957887.sample"
+
+[deps]
+
+source_file="res://sounds/forest-of-the-king.wav"
+dest_files=[ "res://.import/forest-of-the-king.wav-279b2eb8bcaa1284b865d99fbf957887.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

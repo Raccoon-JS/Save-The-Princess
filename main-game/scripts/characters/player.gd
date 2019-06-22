@@ -21,12 +21,14 @@ func _input(event):
 	else:
 		if event.is_action_pressed("ENTER") or event.is_action_pressed("left_click"):
 			if global.fixed[0]:
+				$sound.play()
 				#get_parent().get_node("camera/hud/item_hold/knife").visible = true
 				shooting()
 	pass
 
 func damaged():
 	global.health -= 1
+	$sound.play()
 	get_parent().get_node("camera/hud/health").value = global.health
 	pass
 

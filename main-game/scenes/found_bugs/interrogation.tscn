@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/found_bugs/interrogation.gd" type="Script" id=1]
 [ext_resource path="res://images/background-transparent-1.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://images/trust_bar.png" type="Texture" id=4]
 [ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scripts/found_bugs/bugs_script.gd" type="Script" id=6]
+[ext_resource path="res://sounds/as-the-light-fades.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -26,6 +27,24 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "floating"
+length = 0.9
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("picture:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 170, 90 ), Vector2( 170, 70 ), Vector2( 170, 90 ) ]
+}
 
 [node name="interrogation" type="Node"]
 script = ExtResource( 1 )
@@ -159,3 +178,11 @@ margin_right = 274.0
 margin_bottom = 414.0
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )
+
+[node name="player" type="AnimationPlayer" parent="."]
+anims/floating = SubResource( 6 )
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+autoplay = true

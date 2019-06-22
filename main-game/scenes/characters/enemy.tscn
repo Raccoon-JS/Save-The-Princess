@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/bugged_game/enemy.gd" type="Script" id=1]
 [ext_resource path="res://images/werewolf_sprite_transparent.png" type="Texture" id=2]
+[ext_resource path="res://sounds/typing-noise.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -23,4 +24,8 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aura"]
 shape = SubResource( 2 )
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
 [connection signal="area_entered" from="aura" to="." method="_on_aura_area_entered"]
