@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/found_bugs/interrogation.gd" type="Script" id=1]
 [ext_resource path="res://images/background-transparent-1.png" type="Texture" id=2]
-[ext_resource path="res://scripts/found_bugs/bugs_script.gd" type="Script" id=3]
+[ext_resource path="res://images/trust_bar_under.png" type="Texture" id=3]
+[ext_resource path="res://images/trust_bar.png" type="Texture" id=4]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scripts/found_bugs/bugs_script.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 5 )
 
 [node name="interrogation" type="Node"]
 script = ExtResource( 1 )
@@ -32,6 +43,42 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 expand = true
 
+[node name="trust_bar" type="Control" parent="."]
+margin_left = 480.0
+margin_right = 768.0
+margin_bottom = 100.0
+
+[node name="trust_meter" type="TextureProgress" parent="trust_bar"]
+margin_top = 50.0
+margin_right = 288.0
+margin_bottom = 90.0
+max_value = 6.0
+value = 3.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+
+[node name="distrust" type="Label" parent="trust_bar"]
+margin_left = -20.0
+margin_top = 20.0
+margin_right = 43.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.870588, 0.239216, 0.239216, 1 )
+text = "distrust"
+align = 1
+valign = 1
+
+[node name="trust" type="Label" parent="trust_bar"]
+margin_left = 260.0
+margin_top = 20.0
+margin_right = 301.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.870588, 0.239216, 0.239216, 1 )
+text = "trust"
+align = 1
+valign = 1
+
 [node name="text_box" type="ColorRect" parent="."]
 margin_left = 32.0
 margin_top = 568.0
@@ -51,11 +98,11 @@ margin_right = 728.0
 margin_bottom = 190.0
 
 [node name="script" type="Node" parent="text_box"]
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 
 [node name="options" type="ColorRect" parent="."]
 margin_left = 480.0
-margin_top = 70.0
+margin_top = 100.0
 margin_right = 768.0
 margin_bottom = 530.0
 

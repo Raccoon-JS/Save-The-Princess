@@ -4,6 +4,8 @@ var press_enter = false
 var backward = false
 
 func _ready():
+	$background/ABOUT/licenses.disabled = true
+	$background/ABOUT/licenses.visible = false
 	$background/ABOUT/opening_file_command.visible_characters = 0
 	$background/ABOUT/description.set_visible_characters(0)
 	pass
@@ -70,5 +72,7 @@ func _on_about_description_typing_speed_timeout():
 	if $background/ABOUT/description.get_visible_characters() < $background/ABOUT/description.get_total_character_count():
 		$background/ABOUT/description/sound.play()
 	else:
+		$background/ABOUT/licenses.disabled = false
+		$background/ABOUT/licenses.visible = true
 		$background/ABOUT/description/sound.stop()
 	pass # Replace with function body.

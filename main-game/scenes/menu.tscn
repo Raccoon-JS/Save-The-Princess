@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://images/letter_white_out.png" type="Texture" id=2]
@@ -26,12 +26,15 @@ size = 32
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 48
 extra_spacing_top = 10
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "about_transit"
+[sub_resource type="Animation" id=6]
 step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("background/letter:rect_position")
@@ -58,7 +61,7 @@ tracks/1/keys = {
 "values": [ Vector2( 800, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("background/letter:modulate")
@@ -73,7 +76,7 @@ tracks/0/keys = {
 "values": [ Color( 0.0509804, 0.145098, 0.152941, 1 ), Color( 0.0509804, 0.145098, 0.152941, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 2.0
 step = 0.5
 tracks/0/type = "value"
@@ -174,7 +177,7 @@ margin_right = 736.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
-custom_colors/font_color_hover = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
 custom_colors/font_color_pressed = Color( 0.14902, 0.45098, 0.407843, 1 )
 text = "RETURN"
 flat = true
@@ -199,6 +202,16 @@ wait_time = 0.01
 stream = ExtResource( 8 )
 volume_db = -35.0
 
+[node name="licenses" type="Button" parent="background/ABOUT"]
+margin_left = 330.0
+margin_top = 640.0
+margin_right = 700.0
+margin_bottom = 730.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.0509804, 0.145098, 0.152941, 1 )
+text = "But wanna check out my mixtape?"
+flat = true
+
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
@@ -212,7 +225,7 @@ margin_left = 100.0
 margin_top = 100.0
 margin_right = 700.0
 margin_bottom = 700.0
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0.694118, 0.627451, 1 )
 text = "Objective:
 Finish your cousin's game by fixing three major bugs. Here are his letter, his notes, and a USB drive with the project.
@@ -239,9 +252,9 @@ volume_db = -10.0
 autoplay = true
 
 [node name="player" type="AnimationPlayer" parent="."]
-anims/about_transit = SubResource( 5 )
-anims/dissolve = SubResource( 6 )
-anims/open = SubResource( 7 )
+anims/about_transit = SubResource( 6 )
+anims/dissolve = SubResource( 7 )
+anims/open = SubResource( 8 )
 [connection signal="pressed" from="background/letter/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="background/letter/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="background/letter/about" to="." method="_on_about_pressed"]

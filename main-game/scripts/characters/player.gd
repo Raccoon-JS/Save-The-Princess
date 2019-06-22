@@ -5,7 +5,7 @@ var movedir = Vector2(0,0)
 var action = "idle"
 
 func _ready():
-	$player.play("idle")
+	$animation.play("idle")
 	set_physics_process(true)
 	pass # Replace with function body.
 
@@ -45,6 +45,6 @@ func spritedir_loop():
 
 func anim_switch(animation):
 	var new_ani = animation
-	if $player.current_animation != new_ani:
-		$player.play(new_ani)
+	if $animation.current_animation != new_ani:
+		$animation.play(new_ani)
 	pass

@@ -1,0 +1,222 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/bugged_game/game_control.gd" type="Script" id=1]
+[ext_resource path="res://images/WASD_transparent.png" type="Texture" id=2]
+[ext_resource path="res://images/direction_keys_transparent.png" type="Texture" id=3]
+[ext_resource path="res://images/mouse_transparent.png" type="Texture" id=4]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+outline_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "up"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("cover:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 200.0, 400.0, 600.0, 800.0 ]
+}
+
+[node name="game_control" type="Node"]
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="images" type="Control" parent="."]
+modulate = Color( 0.14902, 0.45098, 0.407843, 1 )
+margin_right = 800.0
+margin_bottom = 800.0
+
+[node name="WASD" type="TextureRect" parent="images"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 2 )
+expand = true
+
+[node name="directions" type="TextureRect" parent="images"]
+margin_left = 32.0
+margin_top = 400.0
+margin_right = 348.0
+margin_bottom = 656.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+expand = true
+
+[node name="mouse" type="TextureRect" parent="images"]
+margin_left = 448.0
+margin_top = 256.0
+margin_right = 768.0
+margin_bottom = 768.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 4 )
+expand = true
+
+[node name="descriptions" type="Control" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+
+[node name="wasd_up" type="Label" parent="descriptions"]
+margin_left = 80.0
+margin_top = 20.0
+margin_right = 167.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move up"
+
+[node name="wasd_down" type="Label" parent="descriptions"]
+margin_left = 170.0
+margin_top = 210.0
+margin_right = 257.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move down"
+
+[node name="wasd_left" type="Label" parent="descriptions"]
+margin_left = 60.0
+margin_top = 250.0
+margin_right = 159.0
+margin_bottom = 290.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move left"
+
+[node name="wasd_right" type="Label" parent="descriptions"]
+margin_left = 280.0
+margin_top = 170.0
+margin_right = 379.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move right"
+
+[node name="direct_up" type="Label" parent="descriptions"]
+margin_left = 80.0
+margin_top = 370.0
+margin_right = 167.0
+margin_bottom = 410.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move up"
+
+[node name="direct_down" type="Label" parent="descriptions"]
+margin_left = 210.0
+margin_top = 550.0
+margin_right = 328.0
+margin_bottom = 590.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move down"
+
+[node name="direct_left" type="Label" parent="descriptions"]
+margin_left = 120.0
+margin_top = 610.0
+margin_right = 219.0
+margin_bottom = 650.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move left"
+
+[node name="direct_right" type="Label" parent="descriptions"]
+margin_left = 300.0
+margin_top = 490.0
+margin_right = 411.0
+margin_bottom = 530.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "move right"
+
+[node name="mouse_left" type="Label" parent="descriptions"]
+margin_left = 490.0
+margin_top = 220.0
+margin_right = 580.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "attack"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="mouse_right" type="Label" parent="descriptions"]
+margin_left = 630.0
+margin_top = 220.0
+margin_right = 720.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "pick up"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="return" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 32.0
+margin_right = 768.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.694118, 0.627451, 1 )
+text = "RETURN"
+flat = true
+
+[node name="start" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 96.0
+margin_right = 768.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.145098, 0.152941, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.694118, 0.627451, 1 )
+text = "START"
+flat = true
+
+[node name="cover" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+
+[node name="player" type="AnimationPlayer" parent="."]
+anims/up = SubResource( 5 )
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="animation_finished" from="player" to="." method="_on_player_animation_finished"]

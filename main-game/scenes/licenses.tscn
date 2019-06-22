@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/licenses.gd" type="Script" id=1]
+[ext_resource path="res://fonts/orange-kid/orange kid.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 2 )
+
+[node name="licenses" type="Node"]
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+
+[node name="information" type="RichTextLabel" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 768.0
+margin_bottom = 650.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )
+text = "Mixtape tracks:
+Mountain Trails by Joshua McLean (mrjoshuamclean.com)
+Licensed under Creative Commons Attribution-ShareAlike 4.0 International
+
+Subdue by Joshua McLean (mrjoshuamclean.com)
+Licensed under Creative Commons Attribution-ShareAlike 4.0 International
+
+Double Violin Concerto 1st Movement by J.S. Bach (performed by Jon Sayles)
+Exzel Music Publishing (freemusicpublicdomain.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/"
+
+[node name="return" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 720.0
+margin_right = 154.0
+margin_bottom = 784.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "RETURN"
+flat = true
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]
