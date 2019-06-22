@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/bugged_game/ThankYou.gd" type="Script" id=1]
+[ext_resource path="res://fonts/moria-citadel/MoriaCitadel.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://images/small-Old-Man-bw.png" type="Texture" id=3]
+[ext_resource path="res://images/Godot_robot_sprite.png" type="Texture" id=4]
+[ext_resource path="res://images/werewolf_sprite_transparent.png" type="Texture" id=5]
+[ext_resource path="res://images/princess-glitch-transparent.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="ThankYou" type="Node"]
+script = ExtResource( 1 )
+
+[node name="bg" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0.694118, 0.627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="title" type="Label" parent="."]
+margin_right = 800.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.929412, 0.239216, 0.239216, 1 )
+text = "THANK YOU FOR PLAYING"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="characters" type="Node2D" parent="."]
+editor/display_folded = true
+modulate = Color( 0.137255, 0.45098, 0.407843, 1 )
+position = Vector2( 0, 240 )
+
+[node name="small-Old-Man-bw" type="Sprite" parent="characters"]
+position = Vector2( 140, 110 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 64, 64 )
+
+[node name="Godot_robot_sprite" type="Sprite" parent="characters"]
+position = Vector2( 330, 100 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="werewolf_sprite_transparent" type="Sprite" parent="characters"]
+position = Vector2( 500, 100 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+
+[node name="princess-glitch-transparent" type="Sprite" parent="characters"]
+position = Vector2( 670, 100 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="buttons" type="VBoxContainer" parent="."]
+margin_left = 271.0
+margin_top = 400.0
+margin_right = 529.0
+margin_bottom = 800.0
+alignment = 1
+
+[node name="menu" type="Button" parent="buttons"]
+margin_top = 112.0
+margin_right = 258.0
+margin_bottom = 198.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.14902, 0.45098, 0.407843, 1 )
+text = "MENU"
+flat = true
+
+[node name="quit" type="Button" parent="buttons"]
+margin_top = 202.0
+margin_right = 258.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.137255, 0.45098, 0.407843, 1 )
+text = "QUIT"
+flat = true
+[connection signal="pressed" from="buttons/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

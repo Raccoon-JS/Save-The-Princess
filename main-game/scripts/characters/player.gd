@@ -3,14 +3,43 @@ extends KinematicBody2D
 const SPEED = 150
 var movedir = Vector2(0,0)
 var action = "idle"
+var knife = preload("res://scenes/bugged_game/knife_throw.tscn")
+var look
+
+var picked_up = false
 
 func _ready():
 	$animation.play("idle")
+	set_process(true)
 	set_physics_process(true)
 	pass # Replace with function body.
 
+func _input(event):
+	if picked_up:
+		if event.is_action_pressed("ENTER") or event.is_action_pressed("left_click"):
+			shooting()
+	else:
+		if event.is_action_pressed("ENTER") or event.is_action_pressed("left_click"):
+			if global.fixed[0]:
+				#get_parent().get_node("camera/hud/item_hold/knife").visible = true
+				shooting()
+	pass
+
+func damaged():
+	global.health -= 1
+	get_parent().get_node("camera/hud/health").value = global.health
+	pass
+
+func _process(delta):
+	if delta:
+		look = get_global_mouse_position() - global_position
+	pass
+
 func _physics_process(delta):
 	if delta:
+		if global.health <= 0:
+			global.game_over = true
+		
 		controls_loop()
 		movement_loop()
 		spritedir_loop()
@@ -19,6 +48,17 @@ func _physics_process(delta):
 			anim_switch("move")
 		else:
 			anim_switch("idle")
+	pass
+
+func shooting():
+	fire_knife(global_position,rad2deg(atan2(look.y,look.x)))
+	pass
+
+func fire_knife(start_pos, degree):
+	var k = knife.instance()
+	get_parent().add_child(k)
+	k.rotation_degrees = degree
+	k.position = start_pos
 	pass
 
 func controls_loop():

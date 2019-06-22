@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/found_bugs/interrogation.gd" type="Script" id=1]
 [ext_resource path="res://images/background-transparent-1.png" type="Texture" id=2]
@@ -13,6 +13,18 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
 font_data = ExtResource( 5 )
 
 [node name="interrogation" type="Node"]
@@ -35,15 +47,16 @@ __meta__ = {
 }
 
 [node name="picture" type="TextureRect" parent="."]
-margin_left = 40.0
-margin_top = 70.0
-margin_right = 460.0
-margin_bottom = 490.0
+margin_left = 170.0
+margin_top = 90.0
+margin_right = 590.0
+margin_bottom = 510.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 expand = true
 
 [node name="trust_bar" type="Control" parent="."]
+visible = false
 margin_left = 480.0
 margin_right = 768.0
 margin_bottom = 100.0
@@ -90,41 +103,59 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 170.0
 margin_bottom = 50.0
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )
+scroll_active = false
 
 [node name="dialogue" type="RichTextLabel" parent="text_box"]
 margin_left = 10.0
 margin_top = 60.0
 margin_right = 728.0
 margin_bottom = 190.0
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )
+scroll_active = false
 
 [node name="script" type="Node" parent="text_box"]
 script = ExtResource( 6 )
 
 [node name="options" type="ColorRect" parent="."]
+visible = false
 margin_left = 480.0
 margin_top = 100.0
 margin_right = 768.0
 margin_bottom = 530.0
 
 [node name="option_buttons" type="VBoxContainer" parent="options"]
-margin_right = 290.0
-margin_bottom = 460.0
+visible = false
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 274.0
+margin_bottom = 414.0
 alignment = 1
 
-[node name="first" type="Button" parent="options/option_buttons"]
-margin_top = 196.0
-margin_right = 290.0
-margin_bottom = 216.0
+[node name="1" type="Button" parent="options/option_buttons"]
+margin_top = 165.0
+margin_right = 258.0
+margin_bottom = 185.0
 flat = true
 
-[node name="second" type="Button" parent="options/option_buttons"]
-margin_top = 220.0
-margin_right = 290.0
-margin_bottom = 240.0
+[node name="2" type="Button" parent="options/option_buttons"]
+margin_top = 189.0
+margin_right = 258.0
+margin_bottom = 209.0
 flat = true
 
-[node name="third" type="Button" parent="options/option_buttons"]
-margin_top = 244.0
-margin_right = 290.0
-margin_bottom = 264.0
+[node name="3" type="Button" parent="options/option_buttons"]
+margin_top = 213.0
+margin_right = 258.0
+margin_bottom = 233.0
 flat = true
+
+[node name="info" type="RichTextLabel" parent="options"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 274.0
+margin_bottom = 414.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )

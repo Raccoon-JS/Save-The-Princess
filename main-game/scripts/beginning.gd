@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	get_tree().paused = false
 	pass # Replace with function body.
 
 func _test_the_game():

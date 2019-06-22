@@ -4,10 +4,18 @@ var current_scene = null
 var new_scene = null
 
 var bugs_found = []
+var fixed = []
 var interrogating_bug
 
+var health
+
+var game_over
+
 func _ready():
+	health = 3
+	game_over = false
 	bugs_found = [false,false,false]
+	fixed = [false, false, false]
 	interrogating_bug = "none"
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
