@@ -62,7 +62,7 @@ margin_right = 784.0
 margin_bottom = 700.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.929412, 0.239216, 0.239216, 1 )
-text = "SAVE THE PRINCESS is a game made as an entry for Godot Relax Jam. The theme is DAMSEL.
+text = "SAVE THE PRINCESS is a game made as an entry for Godot Mild Jam. The theme is DAMSEL. I used, GIMP, Audacity, Beep Box, and Godot Engine to create this game.
 
 Your goal is simple. All you have to do is.
 
@@ -96,6 +96,7 @@ text = "CONTROL"
 flat = true
 
 [node name="cover" type="ColorRect" parent="."]
+visible = false
 margin_right = 800.0
 margin_bottom = 800.0
 color = Color( 0, 0.694118, 0.627451, 1 )

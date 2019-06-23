@@ -19,7 +19,7 @@ config/name="Save the Princess"
 run/main_scene="res://scenes/opening.tscn"
 boot_splash/image="res://images/splash_screen.png"
 boot_splash/bg_color=Color( 0.14902, 0.45098, 0.407843, 1 )
-config/icon="res://icon.png"
+config/icon="res://images/princess_logo.png"
 
 [autoload]
 
