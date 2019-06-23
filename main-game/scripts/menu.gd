@@ -83,3 +83,7 @@ func _on_about_description_typing_speed_timeout():
 		$background/ABOUT/licenses.visible = true
 		$background/ABOUT/description/sound.stop()
 	pass # Replace with function body.
+
+func _on_licenses_pressed():
+	global.goto_scene("res://scenes/licenses.tscn")
+	pass # Replace with function body.
