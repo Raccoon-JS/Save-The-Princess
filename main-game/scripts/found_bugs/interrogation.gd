@@ -35,7 +35,6 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("left_click") or event.is_action_pressed("ENTER"):
-		print("write")
 		write_component()
 	pass
 

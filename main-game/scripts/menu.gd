@@ -4,6 +4,8 @@ var press_enter = false
 var backward = false
 
 func _ready():
+	#$player.visible = true
+	$introduction.visible = true
 	$background/ABOUT/licenses.disabled = true
 	$background/ABOUT/licenses.visible = false
 	$background/ABOUT/opening_file_command.visible_characters = 0
@@ -14,10 +16,12 @@ func _input(event):
 	if press_enter:
 		if event.is_action_pressed("ENTER"):
 			$player.play("open")
+			
 	pass
 
 func _on_player_animation_started(anim_name):
 	if anim_name == "open":
+		
 		$introduction/open.play()
 	if anim_name == "dissolve":
 		$background_music.stop()
@@ -25,6 +29,9 @@ func _on_player_animation_started(anim_name):
 
 func _on_player_animation_finished(anim_name):
 	if anim_name == "open":
+		#$player.visible = false
+		$introduction.queue_free()
+		$introduction/open.queue_free()
 		$background_music.play()
 	if anim_name == "dissolve":
 		global.goto_scene("res://scenes/beginning.tscn")

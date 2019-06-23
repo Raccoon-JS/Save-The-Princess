@@ -6,7 +6,7 @@ var action = "idle"
 var knife = preload("res://scenes/bugged_game/knife_throw.tscn")
 var look
 
-var picked_up = false
+#var picked_up = false
 
 func _ready():
 	$animation.play("idle")
@@ -15,10 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if picked_up:
-		if event.is_action_pressed("ENTER") or event.is_action_pressed("left_click"):
-			shooting()
-	else:
+	if global.picked_up:
 		if event.is_action_pressed("ENTER") or event.is_action_pressed("left_click"):
 			if global.fixed[0]:
 				$sound.play()
@@ -90,3 +87,7 @@ func anim_switch(animation):
 	if $animation.current_animation != new_ani:
 		$animation.play(new_ani)
 	pass
+
+func _on_sound_finished():
+	$sound.stop()
+	pass # Replace with function body.

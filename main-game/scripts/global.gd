@@ -8,11 +8,12 @@ var fixed = []
 var interrogating_bug
 
 var health
-
+var picked_up
 var game_over
 
 func _ready():
 	health = 3
+	picked_up = false
 	game_over = false
 	bugs_found = [false,false,false]
 	fixed = [false, false, false]
