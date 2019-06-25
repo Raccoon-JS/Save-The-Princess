@@ -6,7 +6,7 @@ onready var up_text = $background/texts/princess_words
 func _ready():
 	
 	get_tree().paused = false
-	
+	global.picked_up = false
 	$tiles/indoor_ob/upper.add_to_group("obstacles")
 	$tiles/indoor_ob/under.add_to_group("obstacles")
 	$tiles/outdoor_ob/left.add_to_group("obstacles")
@@ -85,6 +85,7 @@ func _on_princess_body_entered(body):
 func _on_knife_body_entered(body):
 	if body.name == "player":
 		if global.fixed[0]:
+			global.picked_up = true
 			$camera/hud/item_hold/knife.visible = true
 	pass # Replace with function body.
 
