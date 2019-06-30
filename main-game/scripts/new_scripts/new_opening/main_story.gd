@@ -1,17 +1,21 @@
 extends Node
 
 onready var pic = $picture
-onready var char_name = $text_box/char_name
+onready var char_name = $text_box/name_box/char_name
 onready var dialogue = $text_box/text
+onready var lines = $text_box/script
 
 var script = []
 
 func _ready():
 	$background.color = color.cyber_tor
+	$picture.modulate = color.middle_tor
 	$text_box.color = color.dark_tor
 	$text_box/name_box.color = color.middle_tor
-	$text_box/char_name.add_color_override("default_color",color.cyber_tor)
+	$text_box/name_box/char_name.add_color_override("default_color",color.cyber_tor)
 	$text_box/text.add_color_override("default_color",color.cyber_tor)
+	lines.request_ready()
+	write_component()
 	pass # Replace with function body.
 
 func write(char_name,dialogue,pic_path):
@@ -22,4 +26,5 @@ func write_component():
 	char_name.clear()
 	dialogue.clear()
 	pic.texture = load(script[script.size() - 1]["pic_path"])
+	
 	pass
