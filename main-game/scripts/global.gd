@@ -29,3 +29,8 @@ func goto_scene(path):
 	current_scene.queue_free()
 	current_scene = new_scene
 	pass
+	
+func _input(event):
+	if event.is_action_pressed("ESC"): # For debugging
+		get_tree().quit()
+	pass

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Save the Princess"
-run/main_scene="res://scenes/opening.tscn"
+run/main_scene="res://scenes/opening_story/opening.tscn"
 boot_splash/image="res://images/splash_screen.png"
 boot_splash/bg_color=Color( 0.14902, 0.45098, 0.407843, 1 )
 config/icon="res://images/princess_logo.png"
@@ -24,6 +24,7 @@ config/icon="res://images/princess_logo.png"
 [autoload]
 
 global="*res://scripts/global.gd"
+color="*res://scripts/color.gd"
 
 [display]
 
