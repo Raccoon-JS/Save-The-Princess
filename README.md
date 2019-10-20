@@ -2,6 +2,8 @@
 
 This is a github page for *Save the Princess*, an entry for Godot Wild Jam 10 (June 13th to 22nd).
 
+The post-jam version is currently under development.
+
 <p align="center">
 <img src="screenshots/screenshot_5.png"><br>
 <img width="500" src="head_bg_less.png"><br>
